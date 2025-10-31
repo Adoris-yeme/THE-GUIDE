@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le Guide BJ - Écotourisme au Bénin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <style>
+      body { 
+        font-family: 'Inter', sans-serif; 
+      }
+      .prose img { border-radius: 0.5rem; }
+      @keyframes kenburns-top {
+        0% { transform: scale(1) translateY(0); transform-origin: 50% 16%; }
+        100% { transform: scale(1.1) translateY(-10px); transform-origin: top; }
+      }
+      .kenburns-top {
+        animation: kenburns-top 10s ease-out both;
+      }
+      .fade-in-up-hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .fade-in-up-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <script>
+      // IIFE pour définir le thème avant le chargement de la page afin d'éviter le FOUC
+      (function() {
+        try {
+          const theme = JSON.parse(localStorage.getItem('app_theme') || '"light"');
+          if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {
+          console.error('Impossible de définir le thème depuis le localStorage', e);
+        }
+      })();
+
+      tailwind.config = {
+        darkMode: 'class', // Activer le mode sombre
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#2C5F2D', // Vert forêt
+              'brand-secondary': '#99492D', // Terre cuite
+              'brand-accent': '#FFE77A', // Or doux
+              'brand-light': '#FAF6F0', // Sable crème
+              'brand-dark': '#3E362E', // Brun terre
+              'admin-primary': '#2563EB', // Blue-600
+              'admin-secondary': '#475569', // Slate-600
+              'admin-bg': '#F1F5F9', // Slate-100
+              'admin-dark': '#1E293B', // Slate-800
+            },
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-brand-light dark:bg-brand-dark text-brand-dark dark:text-brand-light">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
